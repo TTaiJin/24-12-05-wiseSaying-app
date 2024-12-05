@@ -4,6 +4,7 @@ import com.ll.domain.wiseSaying.entity.WiseSaying;
 import com.ll.domain.wiseSaying.service.WiseSayingService;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class WiseSayingController {
@@ -43,5 +44,26 @@ public class WiseSayingController {
             return;
         }
         System.out.println(id + "번 명언이 삭제되었습니다.");
+    }
+
+    public void actionModify(String cmd) {
+        int id = Integer.parseInt(cmd.substring(6));
+        Optional<WiseSaying> opWiseSaying = wiseSayingService.findById(id);
+
+        if (opWiseSaying.isEmpty()) {
+            System.out.println(id + "번 명언은 존재하지 않습니다.");
+            return;
+        }
+
+        WiseSaying wiseSaying = opWiseSaying.get();
+        System.out.println("명언(기존) : " + wiseSaying.getContent());
+        System.out.print("명언 : ");
+        String newContent = scanner.nextLine();
+
+        System.out.println("작가(기존) : " + wiseSaying.getAuthor());
+        System.out.print("작가 : ");
+        String newAuthor = scanner.nextLine();
+
+        wiseSayingService.requireModify(wiseSaying, newContent, newAuthor);
     }
 }

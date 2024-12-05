@@ -116,7 +116,7 @@ public class WiseSayingControllerTest {
     }
 
     @Test
-    @DisplayName("존재하지 않는 명언삭제에 대한 예외처리")
+    @DisplayName("명언 수정")
     public void t8() {
         String output = AppTest.run("""
                 등록
