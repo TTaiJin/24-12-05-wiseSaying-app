@@ -44,7 +44,7 @@ public class WiseSayingControllerTest {
     }
 
     @Test
-    @DisplayName("등록할때 마다 생성되는 명언번호 증가")
+    @DisplayName("목록")
     public void t4() {
         String output = AppTest.run("""
                 등록

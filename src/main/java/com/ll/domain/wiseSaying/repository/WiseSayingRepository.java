@@ -17,8 +17,13 @@ public class WiseSayingRepository {
     public WiseSaying save(WiseSaying wiseSaying) {
         if (wiseSaying.isNew()) {
             wiseSaying.setId(++lastId);
+            wiseSayings.add(wiseSaying);
             return wiseSaying;
         }
         return wiseSaying;
+    }
+
+    public List<WiseSaying> findAll() {
+        return wiseSayings;
     }
 }
