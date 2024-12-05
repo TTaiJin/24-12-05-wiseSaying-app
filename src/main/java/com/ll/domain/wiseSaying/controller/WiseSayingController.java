@@ -14,5 +14,6 @@ public class WiseSayingController {
 
         System.out.print("작가 : ");
         String author = scanner.nextLine();
+
     }
 }
