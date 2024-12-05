@@ -44,7 +44,7 @@ public class WiseSayingControllerTest {
     }
 
     @Test
-    @DisplayName("목록")
+    @DisplayName("등록할때 마다 생성되는 명언번호 증가")
     public void t4() {
         String output = AppTest.run("""
                 등록
@@ -61,7 +61,7 @@ public class WiseSayingControllerTest {
     }
 
     @Test
-    @DisplayName("등록할때 마다 생성되는 명언번호 증가")
+    @DisplayName("목록")
     public void t5() {
         String output = AppTest.run("""
                 등록
@@ -76,5 +76,23 @@ public class WiseSayingControllerTest {
 
         assertThat(output).contains("1 / 작자미상 / 현재를 사랑하라.")
                 .contains("2 / 작자미상 / 과거에 집착하지 마라.");
+    }
+
+    @Test
+    @DisplayName("삭제")
+    public void t6() {
+        String output = AppTest.run("""
+                등록
+                현재를 사랑하라.
+                작자미상
+                등록
+                과거에 집착하지 마라.
+                작자미상
+                목록
+                삭제?id=1
+                종료
+                """);
+
+        assertThat(output).contains("1번 명언이 삭제되었습니다.");
     }
 }
